@@ -33,7 +33,8 @@ class CHyprBar : public IHyprWindowDecoration {
 
     PHLWINDOW                          getOwner();
 
-    void                               setHidden(bool hidden);
+    void                               updateRules();
+    void                               applyRule(const SWindowRule&);
 
   private:
     SWindowDecorationExtents          m_seExtents;
@@ -47,6 +48,9 @@ class CHyprBar : public IHyprWindowDecoration {
 
     bool                              m_bWindowSizeChanged = false;
     bool                              m_bHidden            = false;
+    bool                              m_bTitleColorChanged = false;
+    std::optional<CColor>             m_bForcedBarColor;
+    std::optional<CColor>             m_bForcedTitleColor;
 
     Vector2D                          cursorRelativeToBar();
 
